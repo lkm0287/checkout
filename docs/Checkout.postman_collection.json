@@ -1,0 +1,242 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Checkout",
+		"_postman_id": "01c7c9cb-debe-4d00-bf04-5a7913fdad29",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Offer 50% off 3+ OFF1",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/offer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"offerCode\": \"OFF1\",\n    \"name\": \"50% off three or more\",\n    \"priceDiscountOffer\": true,\n    \"minimumNumberOfProducts\": 3,\n    \"discountPercentage\": 50\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Offer BOGOF OFF2",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/offer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"offerCode\": \"OFF2\",\n    \"name\": \"Buy one get one free\",\n    \"bogof\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Offer 10% off 5+ OFF3",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/offer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"offerCode\": \"OFF3\",\n    \"name\": \"10% off five or more\",\n    \"bogof\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product Fruit Tea",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productCode\": \"FR1\",\n    \"name\": \"Fruit tea\",\n    \"price\": 3.11,\n    \"offerCode\": \"OFF1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product Strawberries",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productCode\": \"SR1\",\n    \"name\": \"Strawberries\",\n    \"price\": 5.00,\n    \"offerCode\": \"OFF2\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product Coffee",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productCode\": \"CF1\",\n    \"name\": \"Coffee\",\n    \"price\": 11.23,\n    \"offerCode\": \"OFF3\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product Cheese",
+			"request": {
+				"url": "http://localhost:8080/checkout/add/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productCode\": \"CH1\",\n    \"name\": \"Cheese\",\n    \"price\": 2.99,\n    \"offerCode\": \"OFF2\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Scan Product Fruit Tea",
+			"request": {
+				"url": "http://localhost:8080/checkout/scan/product/FR1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Scan Product Strawberries",
+			"request": {
+				"url": "http://localhost:8080/checkout/scan/product/SR1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Scan Product Coffee",
+			"request": {
+				"url": "http://localhost:8080/checkout/scan/product/CF1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Scan Product Cheese",
+			"request": {
+				"url": "http://localhost:8080/checkout/scan/product/CH1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout",
+			"request": {
+				"url": "http://localhost:8080/checkout",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
