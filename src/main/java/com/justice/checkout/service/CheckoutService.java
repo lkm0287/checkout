@@ -19,16 +19,12 @@ public class CheckoutService {
     private final Memory memory;
 
     public BigDecimal checkout() {
-        // apply offers to basket
         applyOffersToBasket();
 
-        // get total
         BigDecimal total = getBasketTotal();
 
-        // clear product basket in memory for next customer
         memory.clearCheckoutBasket();
 
-        // return total with two decimal places for pounds and pence
         return total.setScale(2, BigDecimal.ROUND_DOWN);
     }
 
@@ -36,10 +32,8 @@ public class CheckoutService {
         Set<Product> productsWithOffers = getProductOffers();
 
         for (Product productOffer: productsWithOffers) {
-            // get products in basket to potentially discount
             List<Product> discountableProductsInBasket = getProductsInBasketByProductCode(productOffer.getProductCode());
 
-            // apply price discount offers
             if (qualifiesForPriceDiscountOffer(productOffer.getOffer(), discountableProductsInBasket.size())) {
                 System.out.printf("Applying price discount %s of %d percent off to %d of product %s%n",
                         productOffer.getOffer().getOfferCode(),
@@ -49,7 +43,6 @@ public class CheckoutService {
                 applyPriceDiscountsToProductsInBasket(productOffer.getOffer().getDiscountPercentage(), discountableProductsInBasket);
             }
 
-            // apply bogof offers
             if (qualifiesForBogofOffer(productOffer.getOffer())) {
                 System.out.printf("Applying BOGOF offer %s to the %d products of product %s in the basket%n",
                         productOffer.getOffer().getOfferCode(),
@@ -63,7 +56,7 @@ public class CheckoutService {
     private void applyBogofOffers(List<Product> discountableProductsInBasket) {
         int productCounter = 1;
         for (Product discountableProduct: discountableProductsInBasket) {
-            // for every other product apply the bogof offer
+            // for every other product apply the BOGOF offer
             if (productCounter%2 == 0) {
                 discountableProduct.setPrice(BigDecimal.ZERO);
             }
@@ -111,7 +104,7 @@ public class CheckoutService {
 
     private static BigDecimal calculateNewDiscountedPrice(BigDecimal basePrice, int percentageDiscount){
         if (percentageDiscount > 100) {
-            percentageDiscount = 100; // prevent larger discounts
+            percentageDiscount = 100; // validation to prevent larger discounts
         }
         BigDecimal newAmountAsPercentage = new BigDecimal(100 - percentageDiscount);
         return basePrice.multiply(newAmountAsPercentage).movePointLeft(2);
